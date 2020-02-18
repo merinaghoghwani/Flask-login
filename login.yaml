@@ -1,0 +1,100 @@
+openapi: 3.0.1
+info:
+  title:  API for user interface
+  version: 1.0.0
+servers:
+  - url: 'https://{fqdn}/api/config/v1'
+    variables:
+      sbce-fqdn:
+        default: fqdn
+        description: fqdn of the host
+tags:
+  - name: Register
+    description: APIs related to register
+  - name: Login
+    description: APIs related to login
+  - name: Logout
+    description: APIs related to logout
+
+paths:
+  /register:
+    get:
+      tags:
+        - Register
+      summary: Register API
+      description: Register API
+      operationId: getRegister
+      responses:
+        '200':
+          description: successful operation
+    post:
+      tags:
+        - Register
+      summary: Register API
+      description: Register API
+      operationId: postRegister
+      parameters:
+        - name: username
+          in: query
+          description: username
+          required: true
+          schema:
+            type: string
+        - name: password
+          in: query
+          description: password
+          required: true
+          schema:
+            type: string
+        
+      responses:
+        '200':
+          description: Successful
+        '500':
+          description: Database error
+  /login:
+    get:
+      tags:
+        - Login
+      summary: Login API
+      description: Login API
+      operationId: getLogin
+      responses:
+        '200':
+          description: successful operation
+    post:
+      tags:
+        - Login
+      summary: Login API
+      description: Login API
+      operationId: postLogin
+      parameters:
+        - name: username
+          in: query
+          description: username
+          required: true
+          schema:
+            type: string
+        - name: password
+          in: query
+          description: password
+          required: true
+          schema:
+            type: string
+        
+      responses:
+        '200':
+          description: Successful
+        '500':
+          description: User Error or Database Error
+
+  /logout:
+    get:
+      tags:
+        - Logout
+      summary: Logout API
+      description: Logout API
+      operationId: getLogout
+      responses:
+        '200':
+          description: successful operation
